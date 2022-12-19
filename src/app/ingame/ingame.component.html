@@ -1,0 +1,78 @@
+<nav class="p-2 d-flex justify-content-end navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+        <div class="text-light">
+            <h5 class="m-0">{{uname}}</h5>
+        </div>
+        <div class="">
+            <button class="btn btn-primary btn-sm" (click)="signOut()">Sign out</button>
+        </div>
+    </div>
+</nav>
+
+<div class="container row m-0">
+    <div class="col mt-5 bg-dark text-light d-flex justify-content-center align-middle">
+        <ul>
+            <li class="row">
+                <h4>Bingo Number</h4>
+            </li>
+            <li class="row mt-5">
+                <h1 *ngIf="bingoball.ballNumber != 0 ">{{bingoLetter}} - {{bingoball.ballNumber}}</h1>
+            </li>
+        </ul>
+    </div>
+    <div class="card p-2 mt-5 ms-5 col">
+        <table class="">
+            <thead class="row">
+                <th class="col d-flex align-middle justify-content-center">B</th>
+                <th class="col d-flex align-middle justify-content-center">I</th>
+                <th class="col d-flex align-middle justify-content-center">N</th>
+                <th class="col d-flex align-middle justify-content-center">G</th>
+                <th class="col d-flex align-middle justify-content-center">O</th>
+            </thead>
+            <hr>
+            <tbody>
+                <tr class="row" *ngFor="let item of bingoCard.b; let in = index">
+                    <td class="col d-flex align-middle justify-content-center">
+                        <input type="checkbox" class="btn-check" id="btn-check-outlined-b-{{in}}" autocomplete="off">
+                        <label class="btn btn-outline-danger mt-2" style="min-width: 3.5rem; min-height: 3.5rem;"
+                            for="btn-check-outlined-b-{{in}}">{{bingoCard.b[in]}}</label><br>
+                    </td>
+                    <td class="col d-flex align-middle justify-content-center">
+                        <input type="checkbox" class="btn-check" id="btn-check-outlined-i-{{in}}" autocomplete="off">
+                        <label class="btn btn-outline-danger mt-2" style="min-width: 3.5rem; min-height: 3.5rem;"
+                            for="btn-check-outlined-i-{{in}}">{{bingoCard.i[in]}}</label><br>
+                    </td>
+                    <td class="col d-flex align-middle justify-content-center">
+                        <input type="checkbox" class="btn-check" id="btn-check-outlined-n-{{in}}" autocomplete="off">
+                        <label class="btn btn-outline-danger mt-2" style="min-width: 3.5rem; min-height: 3.5rem;"
+                            for="btn-check-outlined-n-{{in}}">{{bingoCard.n[in]}}</label><br>
+                    </td>
+                    <td class="col d-flex align-middle justify-content-center">
+                        <input type="checkbox" class="btn-check" id="btn-check-outlined-g-{{in}}" autocomplete="off">
+                        <label class="btn btn-outline-danger mt-2" style="min-width: 3.5rem; min-height: 3.5rem;"
+                            for="btn-check-outlined-g-{{in}}">{{bingoCard.g[in]}}</label><br>
+                    </td>
+                    <td class="col d-flex align-middle justify-content-center">
+                        <input type="checkbox" class="btn-check" id="btn-check-outlined-o-{{in}}" autocomplete="off">
+                        <label class="btn btn-outline-danger mt-2" style="min-width: 3.5rem; min-height: 3.5rem;"
+                            for="btn-check-outlined-o-{{in}}">{{bingoCard.o[in]}}</label><br>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="d-flex justify-content-end mt-2">
+        <button class="btn-lg btn-warning" (click)="bingo()">BINGO!</button>
+    </div>
+</div>
+<div class="container row m-0" style="width: 18rem;">
+    <div class="col mt-5 card">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <h5>Players</h5>
+            </li>
+            <li class="list-group-item" *ngFor="let items of game.playersLobbies">{{items.playerName}}<i
+                    class="bi bi-person-circle"></i></li>
+        </ul>
+    </div>
+</div>

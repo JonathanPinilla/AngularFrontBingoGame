@@ -1,0 +1,37 @@
+<nav class="p-2 d-flex justify-content-end navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+        <div class="text-light">
+            <h5 class="m-0">{{uname}}</h5>
+        </div>
+        <div class="">
+            <button class="btn btn-primary btn-sm" (click)="signOut()">Sign out</button>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body row align-items-center">
+            <h6 class="col-sm-2 mb-0">Game number</h6>
+            <h6 class="col-sm-2 mb-0">Starded</h6>
+            <h6 class="col-sm-2 mb-0">Players</h6>
+            <div class="col d-flex justify-content-end">
+                <h6>Join game</h6>
+            </div>
+        </div>
+        <div *ngFor="let item of games">
+            <hr>
+            <div class="card-body row align-items-center">
+                <p class="col-sm-2 mb-0">{{item.id}}</p>
+                <p class="col-sm-2 mb-0">{{item.isStarted}}</p>
+                <div class="col-sm-2 mb-0">
+                    <p class="row" *ngFor="let items of item.playersLobbies">{{items.playerName}}</p>
+                </div>
+                <div class="col d-flex justify-content-end">
+                    <button class="btn btn-success" *ngIf="item.ended == false "
+                        (click)="joinGame(item.id)">Join</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
